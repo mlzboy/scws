@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>SC Web Shell</title>
+<link href="css/templatemo_style.css" type="text/css" rel="stylesheet" /> 
+<script type="text/javascript" src="js/jquery.min.js"></script> 
+<script type="text/javascript" src="js/jquery.scrollTo-min.js"></script> 
+<script type="text/javascript" src="js/jquery.localscroll-min.js"></script> 
+<script type="text/javascript" src="js/init.js"></script> 
+<link rel="stylesheet" href="css/slimbox2.css" type="text/css" media="screen" /> 
+<script type="text/JavaScript" src="js/slimbox2.js"></script> 
+
+</head> 
+<body> 
+<div id="templatemo_header_wrapper">
+	<div id="templatemo_header">
+    	<div id="site_title"><a href="#">To manage your machine.</a></div>
+        <p id="intro_text">Be carefull. Be smart. Above all, be simple and happy.</p>
+    </div>
+</div>
+<div id="templatemo_main_wrapper">
+	<div id="templatemo_main">
+		<div id="content"> 
+            <div id="home" class="section">
+                <ul id="templatemo_menu">
+                    <li><a href="#files" class="files"><span>View Files</span></a></li>
+                    <li><a href="#scripts" class="scripts"><span>Run scripts</span></a></li>
+                    <li><a href="#comingsoon" class="comingsoon"><span>Coming Soon..</span></a></li>
+                    <li><a href="#comingsoon" class="comingsoon"><span>Coming Soon..</span></a></li>
+                    <li class="no_margin_right"><a href="#about" class="about"><span>About</span></a></li>
+                </ul>
+            </div>
+            
+            <div class="section" id="files"> 
+                <h1>View Files</h1>
+                <div class="half left">
+                    <p>File to see : <input type="text" id="filename_input" name="filename_input" class="required input_field" /><button onclick="load_file()">Go!</button></p>
+                    <div id="file_display" class="scrollable">The file will be displayed here.</div>
+				</div>
+                <script type="text/javascript">
+                function htmlEncode(value){
+                    //create a in-memory div, set it's inner text(which jQuery automatically encodes)
+                    //then grab the encoded contents back out.  The div never exists on the page.
+                    return $('<div/>').text(value).html();
+                }
+                function load_file()
+                {
+                    $("#file_display").html("Please wait ..");
+                    $.get("actions/viewfile", {file: $("#filename_input").val()}, function(result)
+                    {
+                        $("#file_display").html("<pre><code>" + htmlEncode(result) + "</code></pre>");
+                    }, "text");
+                }
+                </script>
+                <div class="half right">
+                    <p>Dir to look in : <input type="text" id="dir" name="dir" class="required input_field" /><button>Go!</button></p>
+                    <div id="ls_dir_display" class="scrollable">
+                        Files:
+                        <ul>
+                            <li>FileA</li>
+                            <li>FileB</li>
+                            <li>FileC</li>
+                        </ul>
+                    </div>
+				</div>
+                <a href="#home" class="home_btn">home</a>
+            </div> 
+            
+            <div class="section" id="scripts"> 
+                <h1>Scripts</h1>
+                <div class="half left">
+                    <p><textarea id="text" name="text" rows="15" cols="30" class="required">echo "Hello!"</textarea></p>
+                    <p><button>Go!</button></p>
+                </div>
+                <div class="half right">
+                    <p>No outputs yet.</p>
+                </div>
+                <a href="#home" class="home_btn">home</a> 
+            </div> 
+            
+            <div class="section" id="comingsoon"> 
+                <h1>Coming Soon ...</h1>
+                <div class="half left">
+                </div>
+                <div class="half right">
+                    <p>Please, wait ^_^</p>
+                </div>
+                <a href="#home" class="home_btn">home</a> 
+            </div>
+            
+            <div class="section" id="about"> 
+                <h1>Informations of This Project</h1> 
+                
+                <div class="half left">
+                    <h4>Purpose</h4>
+                    To create a:<br />
+                    Useful, easy, python web shell<br />
+                    with a good-looking user interface.<br />
+                    Just like the picture below(it's not me at all).<br />
+                    
+                    <strong>Github:</strong> coming soon..<br /><br />
+                    
+                    <div class="clear h20"></div>
+                    <div class="img_nom img_border"><span></span>
+                    <img style="width:100%;height:100%" src="http://upload.wikimedia.org/wikipedia/commons/6/61/Smiling_girl.jpg"></div>
+                </div>
+
+                <div class="half right">
+                    <h4>Author</h4>
+                    <p>Just call me cole.</p>
+                    <p>Stephen Omega Coleman, China</p>
+                    <p>View my page at : <br><a href="http://omegacoleman.sinaapp.com/" target="_blank">&nbsp;HERE</a></p>
+                </div>
+                <a href="#home" class="home_btn">home</a> 
+            </div> 
+        </div> 
+    </div>
+</div>
+
+<div id="templatemo_footer_wrapper">
+	<div id="templatemo_footer">
+    	<p>Copyleft © 2012 Omega Coleman | Designed by <a href="http://www.templatemo.com" target="_parent">Free CSS Templates</a></p>
+    </div>
+</div>
+
+</body> 
+</html>
+
