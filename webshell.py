@@ -1,3 +1,10 @@
+#-*- coding:utf-8 -*-
+
+import os, sys
+
+curr_path = os.path.dirname(os.path.abspath(__file__)) + os.sep
+sys.path.append(curr_path + 'bottle')
+
 from bottle import *
 
 WEBSHELL_PATH = '/'
@@ -9,7 +16,7 @@ WEBSHELL_COMMAND_VIEWFILE = 'viewfile'
 
 @route(WEBSHELL_PATH + WEBSHELL_NAME)
 def webshell():
-	return static_file(WEBSHELL_INDEX_NAME, root='./webshell_static/')
+	return static_file(WEBSHELL_INDEX_NAME, root=curr_path + 'webshell_static')
 
 @route(WEBSHELL_COMMAND_PATH + WEBSHELL_COMMAND_VIEWFILE)
 def viewfile():
@@ -23,7 +30,7 @@ def viewfile():
 
 @route(WEBSHELL_PATH + '<filename:path>')
 def webshell_res(filename=WEBSHELL_INDEX_NAME):
-	return static_file(filename, root='./webshell_static/')
+	return static_file(filename, root=curr_path + 'webshell_static')
 
 run(host='localhost', port=8080)
 
